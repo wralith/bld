@@ -35,3 +35,4 @@ Look `query.test.ts` for more examples.
 ## Todo
 
 - [ ] Integration test with `deno-postgres` driver
+- [ ] Create table, Drop table

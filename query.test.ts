@@ -40,13 +40,12 @@ Deno.test("Query.update and Query.returning()", () => {
   let got = bld.table("foo").update(d).where("id", "=", "1").returning("id")
     .build();
   let want =
-    `UPDATE foo SET id = '1' SET bar = 'not-bar' WHERE id = '1' RETURNING id;`;
+    `UPDATE foo SET id = '1', bar = 'not-bar' WHERE id = '1' RETURNING id;`;
   assertEquals(got, want);
 
   got = bld.table("foo").update(d).where("id", "=", "1").returning()
     .build();
-  want =
-    `UPDATE foo SET id = '1' SET bar = 'not-bar' WHERE id = '1' RETURNING *;`;
+  want = `UPDATE foo SET id = '1', bar = 'not-bar' WHERE id = '1' RETURNING *;`;
   assertEquals(got, want);
 });
 

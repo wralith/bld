@@ -35,10 +35,13 @@ export class Query<T extends Record<string, unknown>> {
 
     let result = "";
     for (let i = 0; i < keys.length; i++) {
-      result += `SET ${toSQLKeyValuePair(keys[i], values[i])} `;
+      result += ` ${toSQLKeyValuePair(keys[i], values[i])}`;
+      if (i != keys.length - 1) {
+        result += ",";
+      }
     }
 
-    this._query += ` UPDATE ${this._table} ${result.trim()}`;
+    this._query += ` UPDATE ${this._table} SET ${result.trim()}`;
     return this;
   }
 
